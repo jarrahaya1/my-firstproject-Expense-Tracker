@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- PHASE 2: build the page here.-->
+
+<nav class="navbar bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-text text-light fw-bold">
+      Expense Tracker
+    </span>
+
+    <button id="darkModeBtn" class="btn btn-light">
+      Dark Mode
+    </button>
+  </div>
+</nav>
+
+
+<div class="summarycard-cssgrid">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Amount</h5>
+          <p class="card-text" id="totalAmount">0</p>
+        </div>
+      
+    </div>
+
+
+    <div class="card">
+      
+        <div class="card-body">
+          <h5 class="card-title">Number of Expenses</h5>
+          <p class="card-text" id="expenseCount">0</p>
+        </div>
+      
+    </div>
+
+  
+   
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Highest Expense</h5>
+          <p class="card-text" id="highestExpense">0</p>
+        </div>
+    
+    </div>
+
+  </div>
+</div>
+<div class ="container mt-4">
+    <div id="loading" class="text-center d-none">
+     <div class="spinner-border" role="status">
+    
+  </div>
+</div>
+
+
+  <h4>Add Expense</h4>
+  <form id="expenseForm">
+    <div class="mb-3 w-25">
+      <label for="title" class="form-label">Title</label>
+      <input type="text"  id="title" class="form-control">
+      
+  <div id="titleError"></div>
+    </div>
+<div class="mb-3 w-25">
+      <label for="amount" class="form-label">Amount</label>
+      <input
+        type="number"
+        id="amount"
+        class="form-control"
+        min="0.5"
+        step="0.01"
+        
+      >
+      <div id="amountError"></div>
+    </div>
+     <div class="mb-3 w-25">
+      <label for="category" class="form-label ">Category</label>
+      <select id="category" class="form-select">
+        <option value="">Select category</option>
+        <option value="Food">Food</option>
+        <option value="Transport">Transport</option>
+        <option value="Bills">Bills</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Other">Other</option>
+      </select>
+      <div id="categoryError"></div>
+    </div>
+
+    <div class="mb-3 w-25">
+      <label for="date" class="form-label">Date</label>
+      <input
+        type="date"
+        id="date"
+        class="form-control"
+      >
+      <div id="dateError"></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Add Expense
+    </button>
+
+  </form>
+
+   <div id="alertBox"></div>
+</div>
+
+
+
+<div class="container mt-5">
+  <div class="mb-3">
+    <h3>Expenses</h3>
+  </div>
+  <div class="mb-3">
+    <label for="categoryFilter" class="form-label ">Filter by Category</label>
+
+    <select id="categoryFilter" class="form-select w-25" >
+      <option value="All">All</option>
+      <option value="Food">Food</option>
+      <option value="Transport">Transport</option>
+      <option value="Bills">Bills</option>
+      <option value="Entertainment">Entertainment</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+   <!-- To Export CSV-->
+  <button id="exportBtn" class="btn btn-success mb-3">
+  Export CSV
+</button>
+<div class="table-responsive border ">
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody id="tableBody">
+    </tbody>
+  </table>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal" id="editModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Expense</h5>
+      </div>
+
+      <div class="modal-body">
+
+        <label>Title</label>
+        <input type="text" id="editTitle" class="form-control mb-3">
+
+        <label>Amount</label>
+        <input type="number" id="editAmount" class="form-control mb-3">
+
+        <label>Category</label>
+        <select id="editCategory" class="form-select mb-3">
+          <option>Food</option>
+          <option>Transport</option>
+          <option>Bills</option>
+          <option>Entertainment</option>
+          <option>Other</option>
+        </select>
+
+        <label>Date</label>
+        <input type="date" id="editDate" class="form-control">
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="saveEditBtn">
+          Save
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<footer class="bg-dark text-light text-center py-3 mt-5">
+  <p class="mb-0">Expense Tracker Manage your expenses easily</p>
+</footer>
+    
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
